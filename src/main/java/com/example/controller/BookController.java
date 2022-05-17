@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.Book;
+import com.example.exception.BookNotFoundException;
 import com.example.service.BookService;
 
 import org.springdoc.api.annotations.ParameterObject;
@@ -24,7 +25,8 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Book findById(@PathVariable String id) {
-        return bookService.findById(id);
+        return bookService.findById(id)
+                .orElseThrow(() -> new BookNotFoundException("Book with id " + id + " is not found."));
     }
 
     @GetMapping(value = "/title")
