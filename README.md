@@ -10,3 +10,6 @@ public class HelloController {
     }
 }
 ```
+
+## step 2 use mongodb as backend storage and spring data mongo 
+BookRepository
