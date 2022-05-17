@@ -1,11 +1,9 @@
 package com.example.controller;
 
-import java.util.List;
-import java.util.Map;
-
 import com.example.domain.Book;
 import com.example.service.BookService;
 
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -45,7 +43,7 @@ public class BookController {
     }
 
     @GetMapping("/filter")
-    public Page<Book> filterBook(Pageable pageable) {
+    public Page<Book> filterBook(@ParameterObject Pageable pageable) {
         return bookService.allBooks(pageable);
     }
 
