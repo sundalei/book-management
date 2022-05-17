@@ -1,7 +1,6 @@
 package com.example.advice;
 
 import com.example.exception.BookNotFoundException;
-import com.example.exception.ConversionFailedException;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
@@ -11,12 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalControllerExceptionHandler {
-
-	@ExceptionHandler(ConversionFailedException.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ResponseEntity<String> handleConversion(RuntimeException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
-	}
 	
 	@ExceptionHandler(BookNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
